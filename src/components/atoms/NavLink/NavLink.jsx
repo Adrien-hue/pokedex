@@ -1,6 +1,6 @@
 import { Link as RouterLink, useResolvedPath, useMatch } from "react-router-dom";
 
-import "./NavLink.css";
+import "./NavLink.sass";
   
 const NavLink = ({ to, ...props }) => {
     const resolved = useResolvedPath(to);

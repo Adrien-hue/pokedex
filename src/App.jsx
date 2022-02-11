@@ -1,8 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import logo from './logo.svg';
-import './App.css';
+import './App.sass';
 
 import { NavBar } from 'components/molecules';
+
+import Home from './containers/Home';
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
       <main>
         <NavBar />
         <Routes>
-          <Route path='/' element="" />
+          <Route path='/' element={<Home />} />
         </Routes>
       </main>
     </div>

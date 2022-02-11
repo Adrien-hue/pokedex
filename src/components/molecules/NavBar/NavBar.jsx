@@ -1,6 +1,6 @@
 import { NavLink } from "components/atoms";
 
-import "./NavBar.css";
+import "./NavBar.sass";
 
 const NavBar = () => {
     return <div className="navBar">
