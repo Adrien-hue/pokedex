@@ -1,3 +1,4 @@
+import { Routes, Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
@@ -18,8 +19,17 @@ function App() {
           Learn React
         </a>
       </header>
+      <main>
+        <Routes>
+          <Route path='/' element={<Home />} />
+        </Routes>
+      </main>
     </div>
   );
+}
+
+function Home() {
+  return <h1>Pokédex</h1>
 }
 
 export default App;
