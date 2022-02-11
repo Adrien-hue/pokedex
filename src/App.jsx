@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
+import { NavBar } from 'components/molecules';
+
 function App() {
   return (
     <div className="App">
@@ -10,6 +12,7 @@ function App() {
         <h1>Pokédex</h1>
       </header>
       <main>
+        <NavBar />
         <Routes>
           <Route path='/' element="" />
         </Routes>
