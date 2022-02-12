@@ -21,11 +21,18 @@ $secondary-bg-color:#999999
     flex-wrap: nowrap
 
 main
-    max-width: 900px
+    width: 100%
     max-height: 700px
-    min-width: 360px
-    min-height: 280px
+
     background-color: $secondary-bg-color
     border: 5px solid #ffffff
     border-radius: 20px
     overflow: hidden
+
+$layout-breakpoint-small: 960px
+
+@media (min-width: $layout-breakpoint-small) 
+    main
+        width: 900px
+        height: 700px
+  
