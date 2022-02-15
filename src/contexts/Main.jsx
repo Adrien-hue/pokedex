@@ -17,8 +17,6 @@ const Provider = ({ children }) => {
     const [filteredData, setFilteredData] = useState(data); // Array(getter, setter)
 
     const [currentUrl, setCurrentUrl] = useState("https://pokeapi.co/api/v2/pokemon?offset=0&limit=400");
-    const [previousUrl, setPreviousUrl] = useState("");
-    const [nextUrl, setNextUrl] = useState("");
 
     // Constuction
     useEffect(() => {
@@ -30,9 +28,12 @@ const Provider = ({ children }) => {
                 const dataAPI = await response.json();
                 
                 setData(dataAPI.results);
-                setFilteredData(dataAPI.results);
-                setPreviousUrl(dataAPI.previous);
-                setNextUrl(dataAPI.next);
+                
+                setFilteredData(
+                    dataAPI.results.filter((pokemon) =>
+                        pokemon.name.toLowerCase().includes(value.toLowerCase())
+                    )
+                );
                 
                 setLoading(false);
             } catch (err) {

@@ -1,15 +1,22 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
-import { Loader } from "components/atoms";
-
-import { PokemonList } from "components/molecules";
 import MainContext from "contexts/Main";
 
+import { Loader } from "components/atoms";
+import { PokemonList } from "components/molecules";
+
 const Home = () => {
+    const searchParams = useSearchParams();
     const {value, isLoading, filteredData, handleChange} = useContext(MainContext);
 
+    useEffect(() => {
+        console.log(searchParams);
+        searchParams[1](value.length === 0 ? "" : { filter: value });
+    }, []);
+
     return (<div>
-        {isLoading ? <Loader /> : <PokemonList data={filteredData} handleChange={handleChange}/> }
+        {isLoading ? <Loader /> : <PokemonList data={filteredData} value={value} handleChange={handleChange}/> }
     </div>);
 }
 

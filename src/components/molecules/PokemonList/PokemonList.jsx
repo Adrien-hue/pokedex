@@ -3,7 +3,7 @@ import { PokemonCard } from "components/molecules";
 
 import "./PokemonList.sass";
 
-const PokemonList = ({data = [], handleChange}) => {
+const PokemonList = ({data = [], value, handleChange}) => {
 
 
     return (<div className="pokemonList">
@@ -16,7 +16,7 @@ const PokemonList = ({data = [], handleChange}) => {
                 }
             )}
         </div>
-        <SearchBar handleChange={handleChange}></SearchBar>
+        <SearchBar value={value} handleChange={handleChange}></SearchBar>
     </div>);
 }
 
