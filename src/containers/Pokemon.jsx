@@ -59,7 +59,7 @@ const Pokemon = () => {
     }, []);
 
     return ( <div>
-        {isLoading ? <Loader /> : <PokemonDetails id={pokemonData.id} name={pokemonData.name} pokemonSpecs={pokemonSpecs} pokemonAbilities={pokemonData.abilities}/> }
+        {isLoading ? <Loader /> : <PokemonDetails id={pokemonData.id} name={pokemonData.name} pokemonSpecs={pokemonSpecs} pokemonAbilities={pokemonData.abilities} pokemonTypes={pokemonData.types}/> }
     </div>);
 }
 
