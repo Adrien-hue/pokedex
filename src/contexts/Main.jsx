@@ -16,7 +16,7 @@ const Provider = ({ children }) => {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState(data); // Array(getter, setter)
 
-    const [currentUrl, setCurrentUrl] = useState("https://pokeapi.co/api/v2/pokemon?offset=0&limit=400");
+    const [currentUrl, setCurrentUrl] = useState("https://pokeapi.co/api/v2/pokemon?offset=0&limit=6000");
 
     // Constuction
     useEffect(() => {

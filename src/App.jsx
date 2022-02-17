@@ -5,6 +5,7 @@ import './App.sass';
 import { NavBar } from 'components/molecules';
 
 import Home from './containers/Home';
+import Pokemon from 'containers/Pokemon';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='pokemon/:name' element={<Pokemon />} />
         </Routes>
       </main>
     </div>

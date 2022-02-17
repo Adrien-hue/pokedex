@@ -11,7 +11,6 @@ const Home = () => {
     const {value, isLoading, filteredData, handleChange} = useContext(MainContext);
 
     useEffect(() => {
-        console.log(searchParams);
         searchParams[1](value.length === 0 ? "" : { filter: value });
     }, []);
 
