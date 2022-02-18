@@ -6,6 +6,7 @@ import { NavBar } from 'components/molecules';
 
 import Home from './containers/Home';
 import Pokemon from 'containers/Pokemon';
+import Type from 'containers/Type';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='pokemon/:name' element={<Pokemon />} />
+          <Route path='type' element={<Type />} />
         </Routes>
       </main>
     </div>

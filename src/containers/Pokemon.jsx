@@ -47,7 +47,7 @@ const Pokemon = () => {
                         value: dataAPI.stats[5].base_stat
                     },      
                 ]);
-                console.log(dataAPI);
+                
                 setLoading(false);
             } catch (err) {
                 setError(true);

@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 import { useEffect } from "react";
 
@@ -16,17 +16,25 @@ const Provider = ({ children }) => {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState(data); // Array(getter, setter)
 
-    const [currentUrl, setCurrentUrl] = useState("https://pokeapi.co/api/v2/pokemon?offset=0&limit=6000");
+    const [currentUrl, setCurrentUrl] = useState();
+    const currentLocation = useLocation();
 
     // Constuction
     useEffect(() => {
         const fetchApi = async () => {
             try {
+                let url;
+                if(currentLocation.pathname == "/type"){
+                    url = "https://pokeapi.co/api/v2/type";
+                } else {
+                    url = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=400";
+                }
+
                 const response = await fetch(
-                    currentUrl
+                    url
                 );
                 const dataAPI = await response.json();
-                
+                console.log(dataAPI);
                 setData(dataAPI.results);
                 
                 setFilteredData(
@@ -43,7 +51,7 @@ const Provider = ({ children }) => {
         };
 
         fetchApi();
-    }, []);
+    }, [currentLocation]);
 
     // Barre de recherche
     useEffect(() => {
