@@ -22,6 +22,7 @@ function App() {
           <Route path='pokemon/:name' element={<Pokemon />} />
           <Route path='type' element={<Type />} />
           <Route path='type/:type' element={<Listing />} />
+          <Route path='favorites' element={<Listing />} />
         </Routes>
       </main>
     </div>

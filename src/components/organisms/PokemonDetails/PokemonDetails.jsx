@@ -1,13 +1,21 @@
 import { PokemonAbility, PokemonType } from "components/atoms";
 import { PokemonSpecs } from "components/molecules";
 
+import fav_empty from"../../../images/fav_empty.svg"
+import fav_fill from"../../../images/fav_fill.svg"
+
 import "./PokemonDetails.sass";
 
-const PokemonDetails = ({id, name, pokemonSpecs, pokemonAbilities, pokemonTypes}) => {
+const PokemonDetails = ({id, name, pokemonSpecs, pokemonAbilities, pokemonTypes, isFav, handleClick}) => {
     const image_url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
 
     return (<div className="pokemonDetails">
-        <h2>{name}</h2>
+        <div className="pokemonDetails_title">
+            <h2>{name}</h2>
+
+            <img src={isFav ? fav_fill : fav_empty} alt="logo" width="40px" height="40px" onClick={() => handleClick(id, name)}/>
+        </div>
+        
 
         <div className="specs">
             <div>

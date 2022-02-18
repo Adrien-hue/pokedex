@@ -13,8 +13,24 @@ const Pokemon = () => {
 
     const [pokemonData, setPokemonData] = useState([]);
     const [pokemonSpecs, setPokemonSpecs] = useState([]);
+    
+    const [isFav, setIsFav] = useState(false)
+
+    const handleClick = (id, name) => {
+
+        if(localStorage.getItem(id) != null){
+            localStorage.removeItem(id);
+            setIsFav(false);
+        } else {
+            localStorage.setItem(id, JSON.stringify({name: name, url: `https://pokeapi.co/api/v2/pokemon/${id}/`}));
+            setIsFav(true);
+        }
+
+        console.log(localStorage);
+    }
 
     useEffect(() => {
+        // localStorage.clear()
         const fetchApi = async () => {
             try {
                 const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon_name}`);
@@ -48,6 +64,10 @@ const Pokemon = () => {
                     },      
                 ]);
                 
+                if(localStorage.getItem(dataAPI.id) != null){
+                    setIsFav(true)
+                }
+
                 setLoading(false);
             } catch (err) {
                 setError(true);
@@ -56,10 +76,10 @@ const Pokemon = () => {
         };
 
         fetchApi();
-    }, []);
+    }, [isFav]);
 
     return ( <div>
-        {isLoading ? <Loader /> : <PokemonDetails id={pokemonData.id} name={pokemonData.name} pokemonSpecs={pokemonSpecs} pokemonAbilities={pokemonData.abilities} pokemonTypes={pokemonData.types}/> }
+        {isLoading ? <Loader /> : <PokemonDetails id={pokemonData.id} name={pokemonData.name} pokemonSpecs={pokemonSpecs} pokemonAbilities={pokemonData.abilities} pokemonTypes={pokemonData.types} isFav={isFav} handleClick={handleClick}/> }
     </div>);
 }
 
