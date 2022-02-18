@@ -4,7 +4,7 @@ import './App.sass';
 
 import { NavBar } from 'components/molecules';
 
-import Home from './containers/Home';
+import Listing from './containers/Listing';
 import Pokemon from 'containers/Pokemon';
 import Type from 'containers/Type';
 
@@ -18,9 +18,10 @@ function App() {
       <main>
         <NavBar />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Listing />} />
           <Route path='pokemon/:name' element={<Pokemon />} />
           <Route path='type' element={<Type />} />
+          <Route path='type/:type' element={<Listing />} />
         </Routes>
       </main>
     </div>

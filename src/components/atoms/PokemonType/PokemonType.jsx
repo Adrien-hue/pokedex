@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 import "./PokemonType.sass";
 
 const PokemonType = ({name}) => {
-    return (<p className={`pokemonType ${name}`}>
+    return (<Link to={`/type/${name}`} className={`pokemonType ${name}`}>
         {name}
-    </p>);
+    </Link>);
 }
 
 export default PokemonType;

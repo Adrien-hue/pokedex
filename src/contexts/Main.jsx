@@ -26,6 +26,9 @@ const Provider = ({ children }) => {
                 let url;
                 if(currentLocation.pathname == "/type"){
                     url = "https://pokeapi.co/api/v2/type";
+                } else if(currentLocation.pathname.indexOf("/type/") >= 0){
+                    const searchType = currentLocation.pathname.split('/').slice(-1)[0];
+                    url = `https://pokeapi.co/api/v2/type/${searchType}`;
                 } else {
                     url = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=400";
                 }
@@ -35,13 +38,28 @@ const Provider = ({ children }) => {
                 );
                 const dataAPI = await response.json();
                 console.log(dataAPI);
-                setData(dataAPI.results);
-                
-                setFilteredData(
-                    dataAPI.results.filter((pokemon) =>
-                        pokemon.name.toLowerCase().includes(value.toLowerCase())
-                    )
-                );
+                if(currentLocation.pathname.indexOf("/type/") >= 0){
+                    let data = [];
+                    dataAPI.pokemon.map((v, i) => {
+                        data.push(v.pokemon)
+                    });
+
+                    setData(data);
+                    
+                    setFilteredData(
+                        data.filter((pokemon) => 
+                            pokemon.name.toLowerCase().includes(value.toLowerCase())
+                        )
+                    );
+                } else {
+                    setData(dataAPI.results);
+
+                    setFilteredData(
+                        dataAPI.results.filter((pokemon) =>
+                            pokemon.name.toLowerCase().includes(value.toLowerCase())
+                        )
+                    );
+                }
                 
                 setLoading(false);
             } catch (err) {
