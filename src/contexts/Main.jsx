@@ -26,12 +26,11 @@ const Provider = ({ children }) => {
                 let url;
                 if(currentLocation.pathname == "/favorites"){
                     let data = [];
-                    console.log(localStorage);
 
                     Object.keys(localStorage).forEach(function(key){
                         data.push(JSON.parse(localStorage.getItem(key)));
                     });
-                    
+
                     setData(data);
                         
                     setFilteredData(

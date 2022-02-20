@@ -5,12 +5,15 @@ import './index.sass';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'contexts/Main';
+import { Provider as ModalProvider} from 'contexts/Modal';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider>
-        <App />
+        <ModalProvider>
+          <App />
+        </ModalProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,

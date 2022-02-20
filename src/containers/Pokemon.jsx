@@ -25,8 +25,6 @@ const Pokemon = () => {
             localStorage.setItem(id, JSON.stringify({name: name, url: `https://pokeapi.co/api/v2/pokemon/${id}/`}));
             setIsFav(true);
         }
-
-        console.log(localStorage);
     }
 
     useEffect(() => {

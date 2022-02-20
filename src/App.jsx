@@ -4,9 +4,11 @@ import './App.sass';
 
 import { NavBar } from 'components/molecules';
 
-import Listing from './containers/Listing';
+import Listing from 'containers/Listing';
 import Pokemon from 'containers/Pokemon';
 import Type from 'containers/Type';
+
+import { DefaultModal } from 'Modal/DefaultModal';
 
 function App() {
   return (
